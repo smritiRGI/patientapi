@@ -5,6 +5,7 @@ class GetPatientComponent extends Component{
     constructor(props){
         super(props);
         this.state = {
+            id:"",
             name:"",
             dob:"",
             address:"",
@@ -18,20 +19,18 @@ class GetPatientComponent extends Component{
 
     handleSubmit = event =>{
         event.preventDefault();
-        axios.post('http://localhost:5000/api/Patient' , {patient_name:this.state.name,DOB:this.state.dob,
-    address:this.state.address,contact:this.state.contact,email:this.state.email,
-    diagnosis_reason:this.state.diagnosis, appointment_date:"None",appointment_time:"None"})
+        axios.get('http://localhost:5000/api/Patient' , {params: this.state.id})
     .then(json => {
         if(json.data.Status === "Success")
-        console.log("success");
+        console.log(json.data)
     })
     .catch(error =>{
         console.log(error);
     })
     }
 
-     myChangeHandler = (event) => {
-    this.setState({[event.target.name]: event.target.value});
+     handleChange = (event) => {
+       this.setState({[event.target.name]: event.target.value});
      }
   
 
@@ -40,7 +39,7 @@ class GetPatientComponent extends Component{
         <div>
         <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-            <label>Patient Name</label>
+            <label>Patient ID</label>
             <input type="text" className="form-control" id="id" onChange ={this.handleChange}/>
             </div>
             <button type="submit">Search</button>
@@ -49,4 +48,4 @@ class GetPatientComponent extends Component{
 )}
 }
 
-export default RegisterComponent;
+export default GetPatientComponent;

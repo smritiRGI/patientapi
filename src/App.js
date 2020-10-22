@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 import RegisterComponent from './RegisterComponent';
+import GetPatientComponent from './GetPatientComponent';
 
 function App() {
   return (
     <div className="App">
-      <RegisterComponent/>
+      <GetPatientComponent/>
+      {/*<RegisterComponent/>*/}
     </div>
   );
 }
