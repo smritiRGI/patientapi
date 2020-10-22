@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-class GetPatientComponent extends Component{
+class Filter extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -40,7 +40,7 @@ class GetPatientComponent extends Component{
         <form onSubmit={this.handleSubmit}>
             <div className="form-group">
             <label>Patient ID</label>
-            <input type="text" className="form-control" id="id" onChange ={this.handleChange}/>
+            <input type="text" className="form-control" name="id" value={this.state.id} onChange ={this.handleChange}/>
             </div>
             <button type="submit">Search</button>
         </form>
@@ -48,4 +48,4 @@ class GetPatientComponent extends Component{
 )}
 }
 
-export default GetPatientComponent;
+export default Filter;

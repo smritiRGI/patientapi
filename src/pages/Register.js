@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './register.css';
 
-class RegisterComponent extends Component{
+class Register extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -14,6 +15,8 @@ class RegisterComponent extends Component{
             appointmentdate:"",
             appointmenttime:""
         }
+        this.handleChange = this.handleChange.bind(this);
+        
     }
 
     handleSubmit = event =>{
@@ -30,38 +33,44 @@ class RegisterComponent extends Component{
     })
     }
 
-    handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value});
+    handleChange(event){
+        this.setState({
+                [event.target.name]: event.target.value
+            });
      }
+    
   
 
     render(){
         return(
         <div>
+        <h1>{this.state.name}</h1>
         <form onSubmit={this.handleSubmit}>
+            <h1>Register</h1>
+            <p>Please fill in this form to create an account.</p>
             <div className="form-group">
             <label>Patient Name</label>
-            <input type="text" className="form-control" id="name" onChange ={this.handleChange}/>
+            <input type="text" className="form-control" name="name" value={this.state.name} onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>DOB</label>
-            <input type="date" className="form-control" id="dob" onChange ={this.handleChange}/>
+            <input type="date" className="form-control" name="dob" onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>Address</label>
-            <input type="text" className="form-control" id="address" onChange ={this.handleChange}/>
+            <input type="text" className="form-control" name="address" onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>Contact</label>
-            <input type="text" className="form-control" id="contact" onChange ={this.handleChange}/>
+            <input type="text" className="form-control" name="contact" onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>Email</label>
-            <input type="text" className="form-control" id="email" onChange ={this.handleChange}/>
+            <input type="text" className="form-control" name="email" onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>diagnosis</label>
-            <input type="text" className="form-control" id="diagnosis" onChange={this.handleChange}/>
+            <input type="text" className="form-control" name="diagnosis" onChange={this.handleChange}/>
             </div>
             <button type="submit">Register</button>
         </form>
@@ -69,4 +78,4 @@ class RegisterComponent extends Component{
 )}
 }
 
-export default RegisterComponent;
+export default Register;

@@ -1,0 +1,15 @@
+h1{
+    color: #4d4d4d; /* Green */
+    font-size: 35px;
+    text-align:center;
+}
+
+body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+    margin: 0 auto; 
+    width:250px;
+        
+}
