@@ -27,6 +27,12 @@ export const SidebarData = [
     path: '/search',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
+  },
+  {
+      title: 'Filter',
+      path: '/filter',
+      icon: <IoIcons.IoMdPeople />,
+      cName: 'nav-text'
   }
 
 ];

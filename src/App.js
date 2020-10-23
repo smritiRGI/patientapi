@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Update from './pages/Update';
 import Search from './pages/Search';
+import Filter from './pages/Filter';
 
 
 function App() {
@@ -16,8 +17,9 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/register' component={Register} />
-          <Route path='/update' component={Update} />npm 
+          <Route path='/update' component={Update} />
           <Route path='/search' component={Search} />
+          <Route path='/filter' component={Filter} />
         </Switch>
     </Router>
     </>
