@@ -6,14 +6,15 @@ class Register extends Component{
     constructor(props){
         super(props);
         this.state = {
-            name:"",
-            dob:"",
-            address:"",
-            contact:"",
-            email:"",
-            diagnosis:"",
-            appointmentdate:"",
-            appointmenttime:""
+            name:' ',
+            dob:'',
+            address:' ',
+            contact:'',
+            email:'',
+            doctor:'',
+            diagnosis:'',
+            appointmentdate:'',
+            appointmenttime:''
         }
         this.handleChange = this.handleChange.bind(this);
         
@@ -21,9 +22,18 @@ class Register extends Component{
 
     handleSubmit = event =>{
         event.preventDefault();
-        axios.post('http://localhost:5000/api/Patient' , {patient_name:this.state.name,DOB:this.state.dob,
-    address:this.state.address,contact:this.state.contact,email:this.state.email,
-    diagnosis_reason:this.state.diagnosis, appointment_date:"None",appointment_time:"None"})
+        let params =  {
+            patient_name:this.state.name,
+            dob:this.state.dob,
+            address:this.state.address,
+            contact:this.state.contact,
+            email:this.state.email,
+            doctor_name:this.state.doctor,
+            appointment_date:this.state.appointment_date,
+            appointment_time:this.state.appointment_time,
+            diagnosis_reason:this.state.diagnosis
+        }
+        axios.post('http://localhost:5000/api/Patient' , {params})
     .then(json => {
         console.log("success");
     })
@@ -43,7 +53,6 @@ class Register extends Component{
     render(){
         return(
         <div>
-        <h1>{this.state.name}</h1>
         <form onSubmit={this.handleSubmit}>
             <h1>Register</h1>
             <p>Please fill in this form to create an account.</p>
@@ -53,23 +62,35 @@ class Register extends Component{
             </div>
             <div className="form-group">
             <label>DOB</label>
-            <input type="date" className="form-control" name="dob" onChange ={this.handleChange}/>
+            <input type="date" className="form-control" name="dob" value={this.state.dob} onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>Address</label>
-            <input type="text" className="form-control" name="address" onChange ={this.handleChange}/>
+            <input type="text" className="form-control" name="address" value={this.state.address} onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>Contact</label>
-            <input type="text" className="form-control" name="contact" onChange ={this.handleChange}/>
+            <input type="text" className="form-control" name="contact" value={this.state.contact} onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>Email</label>
-            <input type="text" className="form-control" name="email" onChange ={this.handleChange}/>
+            <input type="text" className="form-control" name="email" value={this.state.email} onChange ={this.handleChange}/>
+            </div>
+            <div className="form-group">
+            <label>Doctor</label>
+            <input type="text" className="form-control" name="doctor" value={this.state.doctor} onChange ={this.handleChange}/>
             </div>
             <div className="form-group">
             <label>diagnosis</label>
-            <input type="text" className="form-control" name="diagnosis" onChange={this.handleChange}/>
+            <input type="text" className="form-control" name="diagnosis" value={this.state.diagnosis} onChange={this.handleChange}/>
+            </div>
+            <div className="form-group">
+            <label>appointment_date</label>
+            <input type="date" className="form-control" name="appointmentdate" value={this.state.appointment_date} onChange={this.handleChange}/>
+            </div>
+            <div className="form-group">
+            <label>appointment_time</label>
+            <input type="text" className="form-control" name="appointmenttime" value={this.state.appointment_time} onChange={this.handleChange}/>
             </div>
             <button type="submit">Register</button>
         </form>
