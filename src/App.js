@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Update from './pages/Update';
-import Filter from './pages/Filter';
+import Search from './pages/Search';
 
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/register' component={Register} />
-          <Route path='/update' component={Update} />
-          <Route path='/filter' component={Filter} />
+          <Route path='/update' component={Update} />npm 
+          <Route path='/search' component={Search} />
         </Switch>
     </Router>
     </>

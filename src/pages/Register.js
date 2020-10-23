@@ -25,7 +25,6 @@ class Register extends Component{
     address:this.state.address,contact:this.state.contact,email:this.state.email,
     diagnosis_reason:this.state.diagnosis, appointment_date:"None",appointment_time:"None"})
     .then(json => {
-        if(json.data.Status === "Success")
         console.log("success");
     })
     .catch(error =>{
