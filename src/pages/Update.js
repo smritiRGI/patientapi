@@ -12,6 +12,7 @@ class Update extends Component {
           contact:"",
           email:"",
           diagnosis:"",
+          doctor:"",
           appointmentdate:"",
           appointmenttime:""
       }

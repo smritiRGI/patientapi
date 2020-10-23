@@ -6,9 +6,9 @@ class Register extends Component{
     constructor(props){
         super(props);
         this.state = {
-            name:' ',
+            name:'',
             dob:'',
-            address:' ',
+            address:'',
             contact:'',
             email:'',
             doctor:'',
@@ -16,33 +16,31 @@ class Register extends Component{
             appointmentdate:'',
             appointmenttime:''
         }
-        this.handleChange = this.handleChange.bind(this);
-        
     }
 
-    handleSubmit = event =>{
+    handleSubmit = (event) =>{
         event.preventDefault();
-        let params =  {
-            patient_name:this.state.name,
-            dob:this.state.dob,
-            address:this.state.address,
-            contact:this.state.contact,
-            email:this.state.email,
-            doctor_name:this.state.doctor,
-            appointment_date:this.state.appointment_date,
-            appointment_time:this.state.appointment_time,
-            diagnosis_reason:this.state.diagnosis
-        }
-        axios.post('http://localhost:5000/api/Patient' , {params})
+       
+        axios.post('http://localhost:5000/api/Patient/post' , { 
+        patient_name:this.state.name,
+        DOB:this.state.dob,
+        address:this.state.address,
+        contact:this.state.contact,
+        email:this.state.email,
+        diagnosis_reason:this.state.diagnosis,
+        doctor_name:this.state.doctor,
+        appointment_date:this.state.appointment_date,
+        appointment_time:this.state.appointment_time,}
+       )
     .then(json => {
-        console.log("success");
+        console.log();
     })
     .catch(error =>{
         console.log(error);
     })
     }
 
-    handleChange(event){
+    handleChange =(event)=>{
         this.setState({
                 [event.target.name]: event.target.value
             });
