@@ -33,7 +33,7 @@ class Register extends Component{
         appointment_time:this.state.appointment_time,}
        )
     .then(json => {
-        console.log();
+        console.log(json);
     })
     .catch(error =>{
         console.log(error);
