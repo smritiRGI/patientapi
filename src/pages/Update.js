@@ -6,6 +6,7 @@ class Update extends Component {
      constructor(props){
         super(props);
         this.state = {
+          id:"",
           name:"",
           dob:"",
           address:"",
@@ -13,8 +14,8 @@ class Update extends Component {
           email:"",
           diagnosis:"",
           doctor:"",
-          appointmentdate:"",
-          appointmenttime:""
+          appointment_date:"",
+          appointment_time:""
       }
      }
 
@@ -23,14 +24,17 @@ class Update extends Component {
       axios.get(`http://localhost:5000/api/Patient/GetId/${this.state.id}`)
       .then(res => {
           this.setState({
-            name: res.data.patient_name,
-            dob:res.data.DOB,
-            address:res.data.address ,
-            contact:res.data.contact,
-            email:res.data.email,
-            appointmentdate:res.data.appointment_date,
-            appointmenttime:res.data.appointment_time
+            patient_name:this.state.name,
+            DOB:this.state.dob,
+        address:this.state.address,
+        contact:this.state.contact,
+        email:this.state.email,
+        diagnosis_reason:this.state.diagnosis,
+        doctor_name:this.state.doctor,
+        appointment_date:this.state.appointment_date,
+        appointment_time:this.state.appointment_time
             })
+            console.log(res.data);
       })
       .catch(error =>{
       console.log(error);
@@ -39,9 +43,10 @@ class Update extends Component {
 
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
+    this.renderTable();
   }
 
-  renderTable(){
+  renderTable  = ()=>{
       return(
       <div>
         <form>
@@ -76,11 +81,11 @@ class Update extends Component {
             <input type="text" className="form-control" name="diagnosis" value={this.state.diagnosis} onChange={this.handleChange}/>
             </div>
             <div className="form-group">
-            <label>diagnosis</label>
+            <label>appointment_date</label>_
             <input type="date" className="form-control" name="appointment_date" value={this.state.appointmentdate} onChange={this.handleChange}/>
             </div>
             <div className="form-group">
-            <label>diagnosis</label>
+            <label>appointment_time</label>
             <input type="text" className="form-control" name="appointment_time" value={this.state.appointmenttime} onChange={this.handleChange}/>
             </div>
             <button type="submit">Update</button>
